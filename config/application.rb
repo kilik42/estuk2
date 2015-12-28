@@ -22,5 +22,14 @@ module TwoSidedMarket
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.paperclip_defaults = {
+      storage:  :s3,
+      s3_credentials: {
+        bucket: ENV['AWS_BUCKET'],
+        accdss_key_id:  ENV['AWS_AWS_KEY_ID'],
+        secret_acess_key: ENV['AWS_SECRET_ACEESS_KEY']
+      }
+    }
   end
 end
